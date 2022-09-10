@@ -12,3 +12,15 @@
 .image-scale {
   @apply transition-all duration-300 ease-linear hover:scale-110;
 }
+
+.form-auth {
+  @apply flex flex-col items-center w-full gap-12 px-8;
+}
+
+.form-group-auth {
+  @apply flex flex-col gap-2;
+}
+
+.form-input-auth {
+  @apply text-white transition-all ease-linear bg-transparent border-2 border-transparent outline-none w-60 border-b-white sm:w-80;
+}

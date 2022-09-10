@@ -8,14 +8,14 @@ const AccountManagerPrevious: FC = () => {
       <header className="flex flex-col px-10">
         <nav className="flex items-center justify-between pt-5 pb-10">
           <h3 className="text-2xl font-bold cursor-pointer">Account Manager</h3>
-          <Link to="/auth/login">
+          <Link to="/home/prob">
             <button className="button">Ingresar</button>
           </Link>
         </nav>
         <div className="w-full grid-cols-2 sm:grid justify-items-center">
           <div className="flex flex-col items-start gap-8">
             <h1 className="text-5xl font-bold lg:text-7xl">Take control of your buying power</h1>
-            <p className="text-lg leading-8 lg:text-xl">
+            <p className="text-lg leading-10 lg:text-xl lg:leading-10">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tempore libero possimus odio repudiandae,
               eligendi ea laudantium ipsa earum veniam rerum amet explicabo quae. Placeat nesciunt harum suscipit
               dolorem eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tempore libero possimus odio
@@ -31,7 +31,9 @@ const AccountManagerPrevious: FC = () => {
 
       {/* Content */}
       <div className="px-10 pb-10 bg-gray-800 text-neutral-50">
-        <h2 className="py-12 text-4xl font-bold text-center">¿Que Ofrecemos?</h2>
+        <h2 className="py-20 m-auto text-4xl font-bold after:mt-2 w-max after:m-auto after:block after:h-2 after:w-full after:bg-neutral-50">
+          ¿What do we offer?
+        </h2>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col h-min">
             <div className="overflow-hidden">

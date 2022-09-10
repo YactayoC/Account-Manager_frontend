@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { AccountManagerPrevious } from '../components/AccountManager';
+import { DashboardPrivate } from './DashboardPrivate';
 import { DashboardPublic } from './DashboardPublic';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -21,10 +22,10 @@ export const AppRouter: FC = () => {
         />
 
         <Route
-          path="/home"
+          path="/home/*"
           element={
-            <PrivateRoute isAuthenticated={true}>
-              <DashboardPublic />
+            <PrivateRoute isAuthenticated={false}>
+              <DashboardPrivate />
             </PrivateRoute>
           }
         />

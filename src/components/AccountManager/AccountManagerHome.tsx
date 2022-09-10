@@ -1,7 +1,12 @@
 import { FC } from 'react';
+import { Navbar } from '../ui';
 
-const AccountManageHome: FC = () => {
-  return <div>AccountManageHome</div>;
+const AccountManagerHome: FC = () => {
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 
-export default AccountManageHome;
+export default AccountManagerHome;
