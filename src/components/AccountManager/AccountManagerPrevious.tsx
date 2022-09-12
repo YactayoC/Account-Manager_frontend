@@ -8,7 +8,7 @@ const AccountManagerPrevious: FC = () => {
       <header className="flex flex-col px-10">
         <nav className="flex items-center justify-between pt-5 pb-10">
           <h3 className="text-2xl font-bold cursor-pointer">Account Manager</h3>
-          <Link to="/home/prob">
+          <Link to="/auth/login">
             <button className="button">Ingresar</button>
           </Link>
         </nav>

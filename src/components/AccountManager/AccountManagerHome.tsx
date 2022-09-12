@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { Navbar } from '../ui';
+import { AccountsList, Navbar } from '../ui';
 
 const AccountManagerHome: FC = () => {
   return (
-    <div>
+    <div className="h-full bg-neutral-50">
       <Navbar />
+      <AccountsList />
     </div>
   );
 };

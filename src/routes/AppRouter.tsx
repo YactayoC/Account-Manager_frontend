@@ -8,6 +8,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter: FC = () => {
+  // todo: user Effect checking user
+
   return (
     <BrowserRouter>
       <Routes>
