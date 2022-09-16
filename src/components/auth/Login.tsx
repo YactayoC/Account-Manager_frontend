@@ -6,23 +6,18 @@ import Swal from 'sweetalert2';
 import { useUser } from '../../hooks';
 import { IUserAuth } from '../../interfaces';
 import { isEmail } from '../../utils';
-import { Loader } from '../ui';
+import { Loader } from '../loader';
 
 const Login: FC = () => {
   document.title = 'Account Manager | Login';
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IUserAuth>();
+  const { register, handleSubmit, formState: { errors } } = useForm<IUserAuth>();
   const [isLoading, setIsLoading] = useState(false);
   const { loginUser } = useUser();
 
   const onLogin = async (dataLogin: IUserAuth) => {
     setIsLoading(true);
     const { ok, msg } = await loginUser(dataLogin);
-    console.log(ok, msg);
 
     if (!ok) {
       setIsLoading(false);
@@ -36,7 +31,7 @@ const Login: FC = () => {
     }
 
     setIsLoading(false);
-    navigate('/home/prob');
+    navigate('/home/accounts');
   };
 
   if (isLoading) {

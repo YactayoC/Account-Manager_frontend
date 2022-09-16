@@ -5,8 +5,8 @@ import { AccountManagerHome } from '../components/AccountManager';
 export const DashboardPrivate: FC = () => {
   return (
     <Routes>
-      <Route path="prob" element={<AccountManagerHome />} />
-      <Route path="*" element={<Navigate to="/home/prob" />} />
+      <Route path="accounts" element={<AccountManagerHome />} />
+      <Route path="*" element={<Navigate to="/accounts" />} />
     </Routes>
   );
 };

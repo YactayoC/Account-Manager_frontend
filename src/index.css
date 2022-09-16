@@ -25,12 +25,34 @@
   @apply text-white transition-all ease-linear bg-transparent border-2 border-transparent outline-none w-60 border-b-white sm:w-80;
 }
 
+.form-input-add-account {
+  @apply pl-2 text-black transition-all ease-linear bg-transparent border-2 border-transparent outline-none w-60 border-b-gray-400 sm:w-80;
+}
+
+.account-card {
+  @apply flex flex-col gap-4 overflow-hidden transition-all ease-linear bg-white shadow-xl cursor-pointer hover:shadow-2xl rounded-lg;
+}
+
+.navbar-desktop {
+  @apply items-center hidden grid-cols-2 px-10 py-4 md:grid md:grid-cols-3 justify-items-center;
+}
+
+.navbar-mobile {
+  @apply flex flex-wrap justify-between px-10 py-4 overflow-hidden transition-all duration-300 ease-linear md:hidden;
+}
+
+.modal-fadeIn {
+  @apply animate-[fadeIn_0.3s_ease-in-out] fixed top-0 z-50 flex items-center justify-center w-full h-full overflow-auto bg-gray-800/[0.7] overflow-y-hidden;
+}
+
 /* Loader */
-.lds-dual-ring {
+.lds-dual-ring,
+.lds-dual-ring-black {
   display: inline-block;
   width: 80px;
   height: 80px;
 }
+
 .lds-dual-ring:after {
   content: ' ';
   display: block;
@@ -42,6 +64,19 @@
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
+.lds-dual-ring-black:after {
+  content: ' ';
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid rgb(31, 41, 55);
+  border-color: rgb(31, 41, 55) transparent rgb(31, 41, 55) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);

@@ -1,14 +1,24 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { AccountManagerPrevious } from '../components/AccountManager';
+import { useUser } from '../hooks';
 import { DashboardPrivate } from './DashboardPrivate';
 import { DashboardPublic } from './DashboardPublic';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { Loader } from '../components/loader';
+import { AccountManagerPrevious } from '../components/AccountManager';
 
 export const AppRouter: FC = () => {
-  // todo: user Effect checking user
+  const { checkingUser, setUser, user, isLoading } = useUser();
+
+  useEffect(() => {
+    checkingUser();
+  }, [setUser]);
+
+  if (isLoading && !user) {
+    return <Loader />;
+  }
 
   return (
     <BrowserRouter>
@@ -17,7 +27,7 @@ export const AppRouter: FC = () => {
         <Route
           path="/auth/*"
           element={
-            <PublicRoute isAuthenticated={false}>
+            <PublicRoute>
               <DashboardPublic />
             </PublicRoute>
           }
@@ -26,7 +36,7 @@ export const AppRouter: FC = () => {
         <Route
           path="/home/*"
           element={
-            <PrivateRoute isAuthenticated={false}>
+            <PrivateRoute isAuthenticated={!!user}>
               <DashboardPrivate />
             </PrivateRoute>
           }

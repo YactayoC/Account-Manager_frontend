@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const PrivateRoute: FC<Props> = ({ children, isAuthenticated }) => {
-  return isAuthenticated ? <Navigate to="/" /> : children;
+  return isAuthenticated ? children : <Navigate to="/auth/login" />;
 };

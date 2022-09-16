@@ -10,12 +10,7 @@ import { isEmail, isFullname } from '../../utils';
 const Register: FC = () => {
   document.title = 'Account Manager | Register';
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<IUserAuth>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<IUserAuth>();
   const { registerUser } = useUser();
 
   const onRegister = async (dataRegister: IUserAuth) => {

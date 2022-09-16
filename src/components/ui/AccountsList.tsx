@@ -1,43 +1,38 @@
 import { FC } from 'react';
 
-const AccountsList: FC = () => {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8];
+import { IAccount } from '../../interfaces';
+import { LoaderAccounts } from '../loader';
+import AccountElement from './AccountElement';
+
+interface Props {
+  accounts: IAccount[];
+  isLoading: boolean;
+}
+
+const AccountsList: FC<Props> = ({ accounts, isLoading }) => {
+  const categories = new Set(accounts.map(account => account.category));
+  const arrCategories = Array.from(categories);
+
+  if (isLoading) {
+    return <LoaderAccounts />;
+  }
 
   return (
-    <>
-      <h2 className="pt-10 pl-10 text-2xl font-bold">Social Networks</h2>
-      <div className="grid grid-cols-1 gap-12 px-10 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {array.map(arr => (
-          <div
-            key={arr}
-            className="flex flex-col gap-4 py-4 transition-all ease-linear bg-white shadow-md cursor-pointer hover:shadow-xl"
-          >
-            <img className="m-auto w-14" src="../twitter.png" alt="red social" />
-            <div className="flex flex-col pl-4">
-              <h4 className="font-bold">Twitter</h4>
-              <span className="text-gray-400">cuentatwitter@gmail.com</span>
-            </div>
+    <div className="h-full pb-8">
+      {arrCategories.map(category => (
+        <div key={category}>
+          <h2 className="pb-5 pl-10 text-2xl font-bold text-gray-800 capitalize pt-14">{category}</h2>
+
+          <div className="grid grid-cols-1 gap-12 px-10 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {accounts
+              .filter(account => account.category === category)
+              .map(account => (
+                <AccountElement key={account.id} account={account} />
+              ))}
           </div>
-        ))}
-
-        <div></div>
-      </div>
-
-      <h2 className="pt-10 pl-10 text-2xl font-bold">SVideoGames</h2>
-      <div className="grid grid-cols-1 gap-12 px-10 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {array.map(arr => (
-          <div key={arr} className="flex flex-col gap-4 py-4 bg-white shadow-lg cursor-pointer">
-            <img className="m-auto w-14" src="../twitter.png" alt="red social" />
-            <div className="flex flex-col pl-4">
-              <h4 className="font-bold">Twitter</h4>
-              <span className="text-gray-400">cuentatwitter@gmail.com</span>
-            </div>
-          </div>
-        ))}
-
-        <div></div>
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 };
 

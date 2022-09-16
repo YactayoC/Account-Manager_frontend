@@ -11,12 +11,12 @@ export interface IUserAuth {
   password: string;
 }
 
-export interface ResponseUserRegister {
+export interface IResponseUserRegister {
   ok: boolean;
   msg: string;
 }
 
-export interface ResponseUserLogin {
+export interface IResponseUserLogin {
   ok: boolean;
   user?: IUser;
   token?: string;
