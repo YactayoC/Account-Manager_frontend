@@ -15,7 +15,7 @@ const AccountManagerHome: FC = () => {
   const [accounts, setAccounts] = useAtom(dataAccounts);
   const [isOpenAdd, setIsOpenAdd] = useAtom(dataModalAdd);
   const [isOpenEdit, setIsOpenEdit] = useAtom(dataModalEdit);
-  const [isOpenDelete, ] = useAtom(dataModalDelete);
+  const [isOpenDelete] = useAtom(dataModalDelete);
   const [accountSelected, setAccountSelected] = useAtom(dataAccountSelected);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const AccountManagerHome: FC = () => {
     const { ok, msg } = await updateAccount(dataAddAccount, accountSelected.aid);
     showMessageModal(ok, msg);
     setIsOpenEdit(false);
-    setAccountSelected(null)
+    setAccountSelected(null);
     reset();
   };
 
@@ -163,7 +163,7 @@ const AccountManagerHome: FC = () => {
                 className="w-full px-6 py-2 m-auto text-white transition-all ease-linear bg-blue-600 hover:bg-blue-800 rounded-2xl"
                 type="submit"
               >
-                {isOpenAdd ? "Add" : "Update"}
+                {isOpenAdd ? 'Add' : 'Update'}
               </button>
             </form>
           </div>

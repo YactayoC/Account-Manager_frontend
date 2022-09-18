@@ -7,7 +7,7 @@ import { useAccount, useUser } from '../../hooks';
 const Navbar: FC = () => {
   const user = useAtomValue(dataUser);
   const { logoutUser } = useUser();
-  const [valueSearch, setValueSearch] = useState("");
+  const [valueSearch, setValueSearch] = useState('');
   const [, setAccounts] = useAtom(dataAccounts);
   const { searchAccount, getAccounts } = useAccount();
 
@@ -36,16 +36,16 @@ const Navbar: FC = () => {
   };
 
   const onSearch = async (e: React.FormEvent<EventTarget>): Promise<void> => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if(valueSearch){
+    if (valueSearch) {
       const { accounts } = await searchAccount(valueSearch);
-      setAccounts(accounts!)
+      setAccounts(accounts!);
     } else {
       const { accounts } = await getAccounts();
-      setAccounts(accounts!)
+      setAccounts(accounts!);
     }
-  }
+  };
 
   return (
     <nav className="w-screen bg-gray-800">
@@ -57,8 +57,8 @@ const Navbar: FC = () => {
             className="bg-slate-50/30 text-white border-none outline-none rounded-md px-3 py-1.5 w-full"
             type="text"
             placeholder="🔍 Search account"
-            name='valueSearch'
-            onChange={(e) => setValueSearch(e.target.value)}
+            name="valueSearch"
+            onChange={e => setValueSearch(e.target.value)}
           />
         </form>
         <div className="items-center hidden gap-4 text-neutral-50 md:flex">
@@ -98,8 +98,8 @@ const Navbar: FC = () => {
               className="bg-slate-50/30 text-white border-none outline-none rounded-md px-3 py-1.5 w-full"
               type="text"
               placeholder="🔍 Search account"
-              name='valueSearch'
-              onChange={(e) => setValueSearch(e.target.value)}
+              name="valueSearch"
+              onChange={e => setValueSearch(e.target.value)}
             />
           </form>
           <div className="flex justify-center gap-4 text-neutral-50">

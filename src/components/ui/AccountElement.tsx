@@ -27,14 +27,14 @@ const AccountElement: FC<Props> = ({ account }) => {
       cancelButtonColor: '#9e98b3',
       confirmButtonText: 'Delete',
       confirmButtonColor: '#fd0f1b',
-    })
+    });
 
     if (result.isConfirmed) {
       const { ok, msg } = await deleteAccount(account.aid);
-      showMessageModal(ok, msg)
+      showMessageModal(ok, msg);
       setIsOpenDelete(false);
     }
-  }
+  };
 
   return (
     <div key={account.aid} className="account-card relative">

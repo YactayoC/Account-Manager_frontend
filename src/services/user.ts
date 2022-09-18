@@ -18,9 +18,9 @@ const userCheckingDB = async (token: string): Promise<IResponseUserLogin> => {
   return data;
 };
 
-const userConfirmDB = async(uid: string) => {
+const userConfirmDB = async (uid: string) => {
   const { data } = await accountManagerAPI(`/auth/confirm-user/${uid}`);
   return data;
-}
+};
 
 export { userRegisterDB, userLoginDB, userCheckingDB, userConfirmDB };

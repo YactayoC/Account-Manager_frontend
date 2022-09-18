@@ -46,7 +46,7 @@ export const useAccount = () => {
     }
   };
 
-  const searchAccount = async(valueSearch: string): Promise<IResponseAccount> => {
+  const searchAccount = async (valueSearch: string): Promise<IResponseAccount> => {
     try {
       const data = await searchAccountDB(valueSearch, token);
       setIsLoading(false);
@@ -54,7 +54,7 @@ export const useAccount = () => {
     } catch (error) {
       return { ok: false };
     }
-  }
+  };
 
   return { addAccount, getAccounts, updateAccount, deleteAccount, searchAccount, isLoading };
 };
