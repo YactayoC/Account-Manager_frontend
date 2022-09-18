@@ -1,12 +1,16 @@
-import { FC } from 'react';
-import { useAtomValue } from 'jotai';
+import React, { FC, useState } from 'react';
+import { useAtom, useAtomValue } from 'jotai';
 
-import { dataUser } from '../../store';
-import { useUser } from '../../hooks';
+import { dataAccounts, dataUser } from '../../store';
+import { useAccount, useUser } from '../../hooks';
 
 const Navbar: FC = () => {
   const user = useAtomValue(dataUser);
   const { logoutUser } = useUser();
+  const [valueSearch, setValueSearch] = useState("");
+  const [, setAccounts] = useAtom(dataAccounts);
+  const { searchAccount, getAccounts } = useAccount();
+
   const showOptions = () => {
     const optionsExit = document.getElementById('options-exit');
 
@@ -31,16 +35,30 @@ const Navbar: FC = () => {
     }
   };
 
+  const onSearch = async (e: React.FormEvent<EventTarget>): Promise<void> => {
+    e.preventDefault()
+
+    if(valueSearch){
+      const { accounts } = await searchAccount(valueSearch);
+      setAccounts(accounts!)
+    } else {
+      const { accounts } = await getAccounts();
+      setAccounts(accounts!)
+    }
+  }
+
   return (
     <nav className="w-screen bg-gray-800">
       {/* Navbar Desktop */}
       <div className="navbar-desktop">
         <h2 className="text-2xl font-bold text-neutral-50">Manager Account</h2>
-        <form className="hidden w-full md:block">
+        <form className="hidden w-full md:block" onSubmit={onSearch}>
           <input
             className="bg-slate-50/30 text-white border-none outline-none rounded-md px-3 py-1.5 w-full"
             type="text"
             placeholder="🔍 Search account"
+            name='valueSearch'
+            onChange={(e) => setValueSearch(e.target.value)}
           />
         </form>
         <div className="items-center hidden gap-4 text-neutral-50 md:flex">
@@ -75,11 +93,13 @@ const Navbar: FC = () => {
 
         {/* Options */}
         <div className="flex flex-col items-center justify-center w-full gap-8 pt-8 transition-all duration-300 ease-linear">
-          <form className="w-full">
+          <form className="w-full" onSubmit={onSearch}>
             <input
               className="bg-slate-50/30 text-white border-none outline-none rounded-md px-3 py-1.5 w-full"
               type="text"
               placeholder="🔍 Search account"
+              name='valueSearch'
+              onChange={(e) => setValueSearch(e.target.value)}
             />
           </form>
           <div className="flex justify-center gap-4 text-neutral-50">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { IRequestAccount, IResponseAccount } from '../interfaces';
-import { addAccountDB, updateAccountDB, getAccountsDB, deleteAccountDB } from '../services';
+import { addAccountDB, updateAccountDB, getAccountsDB, deleteAccountDB, searchAccountDB } from '../services';
 
 export const useAccount = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,5 +46,15 @@ export const useAccount = () => {
     }
   };
 
-  return { addAccount, getAccounts, updateAccount, deleteAccount, isLoading };
+  const searchAccount = async(valueSearch: string): Promise<IResponseAccount> => {
+    try {
+      const data = await searchAccountDB(valueSearch, token);
+      setIsLoading(false);
+      return { ok: true, accounts: data.accounts };
+    } catch (error) {
+      return { ok: false };
+    }
+  }
+
+  return { addAccount, getAccounts, updateAccount, deleteAccount, searchAccount, isLoading };
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAtom } from 'jotai';
 
 import { IUserAuth, IResponseUserLogin, IResponseUserRegister } from '../interfaces';
-import { userCheckingDB, userLoginDB, userRegisterDB } from '../services';
+import { userCheckingDB, userConfirmDB, userLoginDB, userRegisterDB } from '../services';
 import { dataUser } from '../store';
 
 export const useUser = () => {
@@ -29,7 +29,6 @@ export const useUser = () => {
     }
   };
 
-  // todo: corregir
   const checkingUser = async () => {
     const token = localStorage.getItem('token');
 
@@ -56,10 +55,19 @@ export const useUser = () => {
     }
   };
 
+  const confirmUser = async (keyConfirm: string) => {
+    try {
+      const data = await userConfirmDB(keyConfirm);
+      return { ok: true, msg: data.msg };
+    } catch (error) {
+      return { ok: false, msg: error.response.data.msg };
+    }
+  };
+
   const logoutUser = () => {
     localStorage.clear();
     setUser(null);
   };
 
-  return { loginUser, registerUser, checkingUser, logoutUser, isLoading, user, setUser };
+  return { loginUser, registerUser, checkingUser, confirmUser, logoutUser, isLoading, user, setUser };
 };

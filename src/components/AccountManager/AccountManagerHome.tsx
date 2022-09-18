@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { useForm } from 'react-hook-form';
 
 import { useAccount } from '../../hooks';
-import { IAccount, IRequestAccount } from '../../interfaces';
-import { dataAccountSelected, dataModalAdd, dataModalDelete, dataModalEdit } from '../../store';
+import { IRequestAccount } from '../../interfaces';
+import { dataAccounts, dataAccountSelected, dataModalAdd, dataModalDelete, dataModalEdit } from '../../store';
 import { hidePassword, isEmail, showMessageModal, showPassword } from '../../utils';
 import { AccountsList, Navbar } from '../ui';
 
@@ -12,7 +12,7 @@ const AccountManagerHome: FC = () => {
   document.title = 'Account Manager | Home';
   const { register, handleSubmit, reset, formState: { errors } } = useForm<IRequestAccount>();
   const { isLoading, getAccounts, updateAccount, addAccount } = useAccount();
-  const [accounts, setAccounts] = useState<IAccount[]>();
+  const [accounts, setAccounts] = useAtom(dataAccounts);
   const [isOpenAdd, setIsOpenAdd] = useAtom(dataModalAdd);
   const [isOpenEdit, setIsOpenEdit] = useAtom(dataModalEdit);
   const [isOpenDelete, ] = useAtom(dataModalDelete);
@@ -26,7 +26,7 @@ const AccountManagerHome: FC = () => {
     const { ok, accounts } = await getAccounts();
 
     if (!ok) return;
-    setAccounts(accounts);
+    setAccounts(accounts!);
   };
 
   const onAddAccount = async (dataAddAccount: IRequestAccount) => {
@@ -41,6 +41,7 @@ const AccountManagerHome: FC = () => {
     const { ok, msg } = await updateAccount(dataAddAccount, accountSelected.aid);
     showMessageModal(ok, msg);
     setIsOpenEdit(false);
+    setAccountSelected(null)
     reset();
   };
 

@@ -30,7 +30,7 @@
 }
 
 .account-card {
-  @apply flex flex-col gap-4 overflow-hidden transition-all ease-linear bg-white shadow-xl cursor-pointer hover:shadow-2xl rounded-lg;
+  @apply animate-[fadeIn_0.3s_ease-in-out] flex flex-col gap-4 overflow-hidden transition-all ease-linear bg-white shadow-xl cursor-pointer hover:shadow-2xl rounded-lg;
 }
 
 .navbar-desktop {

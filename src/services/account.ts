@@ -41,4 +41,13 @@ const deleteAccountDB = async (aid: string, token: string): Promise<IResponseAcc
   return data;
 };
 
-export { addAccountDB, getAccountsDB, updateAccountDB, deleteAccountDB };
+const searchAccountDB = async (value: string, token: string): Promise<IResponseAccount> => {
+  const { data } = await accountManagerAPI.get(`/account/search-account/${value}` ,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+}
+
+export { addAccountDB, getAccountsDB, updateAccountDB, deleteAccountDB, searchAccountDB };
