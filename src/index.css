@@ -49,8 +49,8 @@
 .lds-dual-ring,
 .lds-dual-ring-black {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 130px;
 }
 
 .lds-dual-ring:after {
@@ -58,11 +58,11 @@
   display: block;
   width: 120px;
   height: 120px;
-  margin: 8px;
   border-radius: 50%;
   border: 6px solid #fff;
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
+  margin: 0;
 }
 
 .lds-dual-ring-black:after {

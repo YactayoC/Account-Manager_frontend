@@ -39,7 +39,7 @@ const AccountElement: FC<Props> = ({ account }) => {
   return (
     <div key={account.aid} className="account-card relative">
       <i
-        className="fa-sharp fa-solid fa-trash absolute right-4 top-0 text-red-400 hover:text-red-600 transition-all ease-linear text-xl"
+        className="fa-sharp fa-solid fa-trash absolute right-4 top-0 text-red-400 hover:text-red-600 transition-all ease-linear text-xl pt-2"
         onClick={onDeleteAccount}
       ></i>
       <div
