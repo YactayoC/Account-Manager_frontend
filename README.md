@@ -23,8 +23,8 @@ _Do you need have installed_
 After cloning the project you need to run the next commands
 
 ```
-  1️⃣ => npm install or yarn install
-  2️⃣ => npm start or yarn start
+  1️⃣ => npm install / yarn install
+  2️⃣ => npm start / yarn start
 ```
 
 ## Preview 📷
