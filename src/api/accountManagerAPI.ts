@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const accountManagerAPI = axios.create({
-  baseURL: 'account-managerbackend-production.up.railway.app',
+  baseURL: 'https://account-managerbackend-production.up.railway.app/api',
 });
 
 export default accountManagerAPI;
